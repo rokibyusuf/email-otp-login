@@ -8,48 +8,20 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 
-// SEND EMAIL OTP (LOGIN LINK)
-function sendOTP() {
-  const email = document.getElementById("email").value;
+// GOOGLE LOGIN
+function loginWithGoogle() {
+  const provider = new firebase.auth.GoogleAuthProvider();
   const message = document.getElementById("message");
 
-  if (!email) {
-    message.innerText = "Please enter your email";
-    message.style.color = "red";
-    return;
-  }
-
-  const actionCodeSettings = {
-    url: "https://yourusername.github.io/email-otp-login/", // redirect back here
-    handleCodeInApp: true,
-  };
-
-  auth.sendSignInLinkToEmail(email, actionCodeSettings)
-    .then(() => {
-      window.localStorage.setItem("emailForSignIn", email);
-      message.innerText = "Login link sent! Check your email 📧";
+  auth.signInWithPopup(provider)
+    .then(result => {
+      message.innerText = "Login successful 🎉";
       message.style.color = "green";
+      console.log("User:", result.user);
+      // NEXT PAGE WILL COME LATER
     })
     .catch(error => {
       message.innerText = error.message;
       message.style.color = "red";
     });
-}
-
-// COMPLETE LOGIN AFTER EMAIL CLICK
-if (auth.isSignInWithEmailLink(window.location.href)) {
-  let email = window.localStorage.getItem("emailForSignIn");
-
-  if (!email) {
-    email = prompt("Please confirm your email");
-  }
-
-  auth.signInWithEmailLink(email, window.location.href)
-    .then(() => {
-      window.localStorage.removeItem("emailForSignIn");
-      alert("Login successful 🎉");
-      // NEXT PAGE WILL COME LATER
-    })
-    .catch(err => alert(err.message));
-
 }
