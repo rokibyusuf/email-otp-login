@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Email OTP Login</title>
+  <title>Login</title>
   <link rel="stylesheet" href="style.css">
 
   <!-- Firebase -->
@@ -13,12 +13,13 @@
 
 <div class="container">
   <div class="card">
-    <h2>Welcome Back 👋</h2>
-    <p class="sub">Login with your email to get a one-time code</p>
+    <h2>Welcome 👋</h2>
+    <p class="sub">Continue to your account</p>
 
-    <input type="email" id="email" placeholder="Enter your email">
-
-    <button onclick="sendOTP()">Send Login Code</button>
+    <button class="google-btn" onclick="loginWithGoogle()">
+      <img src="https://www.svgrepo.com/show/475656/google-color.svg">
+      Continue with Google
+    </button>
 
     <p id="message"></p>
   </div>
