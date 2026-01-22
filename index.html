@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Email OTP Login</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <div class="card">
+    <h2>Welcome Back 👋</h2>
+    <p class="sub">Login with your email to get a one-time code</p>
+
+    <input type="email" id="email" placeholder="Enter your email">
+
+    <button onclick="sendOTP()">Send Login Code</button>
+
+    <p id="message"></p>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
