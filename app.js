@@ -20,7 +20,7 @@ function sendOTP() {
   }
 
   const actionCodeSettings = {
-    url: window.location.href, // redirect back here
+    url: "https://yourusername.github.io/email-otp-login/", // redirect back here
     handleCodeInApp: true,
   };
 
@@ -51,4 +51,5 @@ if (auth.isSignInWithEmailLink(window.location.href)) {
       // NEXT PAGE WILL COME LATER
     })
     .catch(err => alert(err.message));
+
 }
